@@ -76,7 +76,7 @@ while running:
         i += 1 
         if (isDrawnFlag == True):
             while(True):
-                for event in pygame.event.get():
+                for event in pygame.event.get(): #Important to prevent crashes within loops. Peculiarity of PyGame. 
                     if event.type == pygame.QUIT:
                         running = False
                 if (keyboard.is_pressed('q')):
