@@ -14,9 +14,13 @@ It's not as much a programming problem as it is a practical one. I might come up
 
 In a nutshell:
 1:Initialize transparent window
+
 2:Load templates
+
 3:Grab screenshot
+
 4:Match i template to all objects within screenshot
 5:When users presses Q, redo step 3-5 until exit. 
+
 
 ![Proof of concept](https://i.imgur.com/YMTtrC4.png)
