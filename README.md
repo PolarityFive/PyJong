@@ -13,6 +13,7 @@ The algorithm will wait until a key is pressed for two reasons.
 It's not as much a programming problem as it is a practical one. I might come up with something in the future. 
 
 In a nutshell:
+
 1:Initialize transparent window
 
 2:Load templates
@@ -22,5 +23,7 @@ In a nutshell:
 4:Match i template to all objects within screenshot
 5:When users presses Q, redo step 3-5 until exit. 
 
+This is the end result. 
 
-![Proof of concept](https://i.imgur.com/YMTtrC4.png)
+
+![Proof of concept](https://i.imgur.com/ZyWxQFE.png)
