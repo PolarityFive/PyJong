@@ -35,24 +35,18 @@ tileNames = [os.path.basename(x) for x in glob.glob('C:\\Users\\Jim\\Desktop\\Py
 templates = [cv2.imread(file) for file in glob.glob("C:\\Users\\Jim\\Desktop\\PyjongIMG\\tiles\\*.png")]
 
 
-threshold = 0.85
+threshold = 0.90
 method = cv2.TM_CCOEFF_NORMED
 
 
 while running:
-    
-    
-    cImage = ImageGrab.grab()
-    cImage.save('C:\\Users\\Jim\\Desktop\\PyjongIMG\\cImage.png')
-    img = cv2.imread('C:\\Users\\Jim\\Desktop\\PyjongIMG\\save1.png',cv2.IMREAD_COLOR)
-
     i = 0
-
     for template in templates: 
-
+        cImage = ImageGrab.grab()
+        cImage.save('C:\\Users\\Jim\\Desktop\\PyjongIMG\\cImage.png')
+        img = cv2.imread('C:\\Users\\Jim\\Desktop\\PyjongIMG\\cImage.png',cv2.IMREAD_COLOR)
         res = cv2.matchTemplate(img, template, method)
         doubleCount = 0
-        singleCount = 2
         max_val = 1
         
         isDrawnFlag = False
@@ -61,20 +55,24 @@ while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-            
+            if (i % 2 == 0):
+                color = (0,150,0)
+            else:
+                color = (255,255,255)
+                    
             min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
             if (max_val > threshold):
                 isDrawnFlag = True
                 res[max_loc[1]-30//2:max_loc[1]+30//2+1, max_loc[0]-30//2:max_loc[0]+30//2+1] = 0
                 pygame.draw.rect(screen, color, pygame.Rect(max_loc[0], max_loc[1],50 ,80),3)
-                screen.blit(font.render(tileNames[i], True, (255,255,255)), (max_loc[0]-30, max_loc[1]-30))
+                screen.blit(font.render(tileNames[i], True, color), (max_loc[0]-30, max_loc[1]-30))
                 pygame.display.update()
                 doubleCount+=1
 
         print("Max Val: ", max_val)
         print ("Max Loc: ", max_loc)
         i += 1 
-        if (isDrawnFlag == True):
+        if (isDrawnFlag == True and i%2 == 0):
             while(True):
                 for event in pygame.event.get(): #Important to prevent crashes within loops. Peculiarity of PyGame. 
                     if event.type == pygame.QUIT:
