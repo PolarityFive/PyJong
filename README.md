@@ -6,8 +6,10 @@ I replied: "Of course. Watch this."
 She did not, in fact, "watch this" as I spent the entire evening learning how to program in Python. 
 
 Two evenings later, I created this. A multi template, multi object matching python script that highlights all Mahjong Solitaire tiles a player can select. 
-The algorithm will wait until a key is pressed for two reasons. 
+The algorithm will wait until a key is pressed to match the next templates for two reasons:
+
 #1: Conserve resources. 
+
 #2: If it continues matching and drawing tiles the screen becomes a mess and it's impossible to distinguish....pretty much anything. 
 
 It's not as much a programming problem as it is a practical one. I might come up with something in the future. 
@@ -20,8 +22,13 @@ In a nutshell:
 
 3:Grab screenshot
 
-4:Match i template to all objects within screenshot
-5:When users presses Q, redo step 3-5 until exit. 
+4:Match i template to all objects within screenshot.
+
+5:Increase i and match the new template within the same screenshot. 
+
+6: Draw all matches 
+
+5:When user presses Q, redo step 3-6 until exit. 
 
 This is the end result. 
 
